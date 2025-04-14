@@ -1,0 +1,18 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  labels:
+    language: kcl
+  name: xapps.app.uppound.io
+spec:
+  compositeTypeRef:
+    apiVersion: app.uppound.io/v1alpha1
+    kind: XApp
+  mode: Pipeline
+  pipeline:
+  - functionRef:
+      name: acmeco-uppound-azuppound-function
+    step: uppound-function
+  - functionRef:
+      name: crossplane-contrib-function-auto-ready
+    step: crossplane-contrib-function-auto-ready

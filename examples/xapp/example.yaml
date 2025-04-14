@@ -1,0 +1,23 @@
+apiVersion: app.uppound.io/v1alpha1
+kind: XApp
+metadata:
+  name: example
+spec:
+  compositionSelector:
+    matchLabels:
+      language: kcl
+  parameters:
+    id: uppound-az
+    containers:
+      - name: frontend
+        image: tr0njavolta/uppound-demo-frontend:latest
+      - name: backend
+        image: tr0njavolta/uppound-demo-backend:latest
+    region: eastus
+    version: "1.30"
+    nodes:
+      count: 3
+      instanceType: Standard_D2s_v3
+  writeConnectionSecretToRef:
+    name: uppound-azure-kubeconfig
+    namespace: default

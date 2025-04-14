@@ -1,0 +1,21 @@
+apiVersion: meta.dev.upbound.io/v1alpha1
+kind: Project
+metadata:
+  name: uppound-az
+spec:
+  dependsOn:
+  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
+    version: '>=v0.0.0'
+  - configuration: xpkg.upbound.io/upbound/configuration-azure-aks
+    version: v0.13.0
+  - configuration: xpkg.upbound.io/upbound/configuration-azure-network
+    version: v0.15.0
+  - provider: xpkg.upbound.io/upbound/provider-kubernetes
+    version: '>=v0.0.0'
+  description: This is where you can describe your project.
+  license: Apache-2.0
+  maintainer: Upbound User <user@example.com>
+  readme: |
+    This is where you can add a readme for your project.
+  repository: xpkg.upbound.io/acmeco/uppound-az
+  source: github.com/upbound/project-template
