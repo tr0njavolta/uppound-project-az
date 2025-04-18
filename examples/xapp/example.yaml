@@ -10,9 +10,9 @@ spec:
     id: uppound-az
     containers:
       - name: frontend
-        image: tr0njavolta/uppound-demo-frontend:latest
+        image: xpkg.upbound.io/upbound/uppound-demo-frontend:latest
       - name: backend
-        image: tr0njavolta/uppound-demo-backend:latest
+        image: xpkg.upbound.io/upbound/uppound-demo-backend:latest
     region: eastus
     version: "1.30"
     nodes:
