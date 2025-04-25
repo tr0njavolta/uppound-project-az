@@ -409,9 +409,7 @@ _items = [
                                 volumes: [
                                     {
                                         name: "postgres-data"
-                                        persistentVolumeClaim: {
-                                            claimName: "postgres-data-pvc"
-                                        }
+                                        emptyDir: {}
                                     }
                                     {
                                         name: "db-schema"
@@ -419,8 +417,7 @@ _items = [
                                             name: "db-schema"
                                         }
                                     }
-                                ]
-                            }
+                                ]                            }
                         }
                     }
                 }
@@ -513,36 +510,6 @@ _items = [
                     ('Luffy', 'Cat', 'Tuxedo', 5,'Luffy''s always ready for a black-tie event' ,'https://raw.githubusercontent.com/tr0njavolta/uppound-demo/main/images/luffy.jpg'),
                     ('Minik', 'Cat', 'Shorthair domestic', 6,'Minik loves treats, catnip, and controlling the weather with his mind' ,'https://raw.githubusercontent.com/tr0njavolta/uppound-demo/main/images/minik.jpg'),
                     ('Mochi', 'Dog', 'Sharpei', 16, 'A handsome, well-dressed adventurer with a knack for finding the coziest cuddle spots', 'https://raw.githubusercontent.com/tr0njavolta/uppound-demo/main/images/mochi.jpg');"""
-                    }
-                }
-            }
-        }
-    }
-    # PostgreSQL PersistentVolumeClaim
-    {
-        apiVersion: "kubernetes.crossplane.io/v1alpha1"
-        kind: "Object"
-        metadata: _metadata("{}-postgres-pvc".format(oxr.metadata.name))
-        spec: {
-            providerConfigRef: {
-                name: oxr.metadata.name
-            }
-            forProvider: {
-                manifest: {
-                    apiVersion: "v1"
-                    kind: "PersistentVolumeClaim"
-                    metadata: {
-                        name: "postgres-data-pvc"
-                        namespace: "default"
-                    }
-                    spec: {
-                        accessModes: ["ReadWriteOnce"]
-                        resources: {
-                            requests: {
-                                storage: "1Gi"
-                            }
-                        }
-                        storageClassName: "managed-premium"
                     }
                 }
             }
